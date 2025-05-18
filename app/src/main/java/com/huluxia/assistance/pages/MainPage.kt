@@ -1,5 +1,6 @@
 package com.huluxia.assistance.pages
 
+import android.content.Intent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -19,9 +20,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.net.toUri
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
+import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.factory.toClass
 import com.huluxia.assistance.CORE_DECRYPT_KEY
 import com.huluxia.assistance.pages.children.ABOUT_PAGE
@@ -32,6 +35,7 @@ import com.huluxia.assistance.pages.components.ChildItem
 import com.huluxia.assistance.pages.components.ChildItemSwitch
 import com.huluxia.assistance.utils.getVersionCode
 import com.huluxia.assistance.utils.getVersionName
+import com.huluxia.assistance.utils.showToast
 import com.kongzue.dialogx.dialogs.MessageDialog
 import de.robv.android.xposed.XposedHelpers
 
@@ -54,6 +58,14 @@ fun MainPage(
     cls: ClassLoader, navController: NavHostController
 ) {
     val context = LocalContext.current
+    val reflectDataSource = "com.huluxia.data.d".toClass(cls).method {
+        returnType = "com.huluxia.data.LoginUserInfo".toClass(cls)
+    }.give()
+
+    val dataSource = XposedHelpers.callMethod(
+        "com.huluxia.data.d".toClass(cls).getDeclaredConstructor().newInstance(),
+        reflectDataSource?.name
+    )
     Scaffold(
         modifier = Modifier.fillMaxSize()
     ) { paddingValues ->
@@ -146,54 +158,75 @@ fun MainPage(
                                 )
                                 .background(Color.White)
                         ) {
+//                            ChildItem(
+//                                label = "个人中心"
+//                            ) {
+//                                if (dataSource == null) {
+//
+//                                }else {
+//
+//                                }
+//                            }
                             ChildItem(
                                 label = "一键签到"
                             ) {
-                                val categoryIds = listOf<Long>(
-                                    94L,
-                                    43L,
-                                    119L,
-                                    81L,
-                                    16L,
-                                    44L,
-                                    45L,
-                                    96L,
-                                    70L,
-                                    111L,
-                                    4L,
-                                    29L,
-                                    126L,
-                                    71L,
-                                    110L,
-                                    107L,
-                                    21L,
-                                    115L,
-                                    102L,
-                                    3L,
-                                    76L,
-                                    57L,
-                                    92L,
-                                    98L,
-                                    58L,
-                                    82L,
-                                    63L,
-                                    22L,
-                                    2L,
-                                    108L,
-                                    125L,
-                                    6L,
-                                    67L,
-                                    68L,
-                                    69L
-                                )
-                                categoryIds.forEach { categoryId ->
-                                    XposedHelpers.callMethod(
-                                        "com.huluxia.module.topic.c".toClass(
-                                            cls
-                                        ).getDeclaredConstructor().newInstance(), "j0", categoryId
+                                if (dataSource == null) {
+                                    context.showToast("未登陆")
+                                    "com.huluxia.ui.account.LoginActivity".toClass(cls)
+                                        .also { clazz ->
+                                            context.startActivity(
+                                                Intent(context, clazz)
+                                            )
+                                        }
+                                } else {
+                                    val categoryIds = listOf<Long>(
+                                        94L,
+                                        43L,
+                                        119L,
+                                        81L,
+                                        16L,
+                                        44L,
+                                        45L,
+                                        96L,
+                                        70L,
+                                        111L,
+                                        4L,
+                                        29L,
+                                        126L,
+                                        71L,
+                                        110L,
+                                        107L,
+                                        21L,
+                                        115L,
+                                        102L,
+                                        3L,
+                                        76L,
+                                        57L,
+                                        92L,
+                                        98L,
+                                        58L,
+                                        82L,
+                                        63L,
+                                        22L,
+                                        2L,
+                                        108L,
+                                        125L,
+                                        6L,
+                                        67L,
+                                        68L,
+                                        69L
                                     )
+                                    categoryIds.forEach { categoryId ->
+                                        XposedHelpers.callMethod(
+                                            "com.huluxia.module.topic.c".toClass(
+                                                cls
+                                            ).getDeclaredConstructor().newInstance(),
+                                            "j0",
+                                            categoryId
+                                        )
+                                    }
+                                    MessageDialog.show("执行完成", "签到任务已推送到队列！", "OK")
                                 }
-                                MessageDialog.show("执行完成", "签到任务已推送到队列！", "OK")
                             }
                             ChildItem(
                                 label = "关于我们"
@@ -201,10 +234,31 @@ fun MainPage(
                                 navController.navigate(ABOUT_PAGE)
                             }
                         }
+                        Column(
+                            modifier = Modifier
+                                .padding(top = 10.dp)
+                                .fillMaxWidth()
+                                .clip(
+                                    RoundedCornerShape(
+                                        5.dp
+                                    )
+                                )
+                                .background(Color.White)
+                        ) {
+                            ChildItem(
+                                label = "Github"
+                            ) {
+                                val intent = Intent(
+                                    Intent.ACTION_VIEW,
+                                    "https://github.com/A-Lost-Kid/com-huluxia-assistance".toUri()
+                                )
+                                context.startActivity(intent)
+                            }
+                        }
                     }
+
                 }
             }
         }
-
     }
 }
