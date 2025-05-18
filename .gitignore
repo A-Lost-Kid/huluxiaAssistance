@@ -19,7 +19,7 @@ build/
 captures/
 .externalNativeBuild/
 .cxx/
-*.apk
+*.dm
 output.json
 
 # IntelliJ
