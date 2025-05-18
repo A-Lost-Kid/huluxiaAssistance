@@ -22,10 +22,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.github.kyuubiran.ezxhelper.misc.AndroidUtils.showToast
 import com.highcapable.yukihookapi.hook.factory.prefs
-import com.highcapable.yukihookapi.hook.log.YLog
 import com.huluxia.assistance.R
+import com.huluxia.assistance.utils.showToast
 
 /**
  * @author: 迷路的小孩
@@ -78,9 +77,11 @@ fun ChildItemSwitch(
             .padding(vertical = 20.dp, horizontal = 15.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Column(modifier = Modifier
-            .fillMaxHeight()
-            .weight(1f)) {
+        Column(
+            modifier = Modifier
+                .fillMaxHeight()
+                .weight(1f)
+        ) {
             Text(
                 text = label, color = Color.Black, fontSize = 14.8.sp
             )

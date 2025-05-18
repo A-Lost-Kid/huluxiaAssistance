@@ -1,7 +1,6 @@
 package com.huluxia.assistance.hooks
 
 import android.content.Context
-import com.github.kyuubiran.ezxhelper.misc.AndroidUtils.showToast
 import com.highcapable.yukihookapi.hook.factory.field
 import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.factory.prefs
@@ -19,6 +18,7 @@ import com.huluxia.assistance.MENU_POST_TOP_SHOW_KEY
 import com.huluxia.assistance.MENU_POST_VERTICAL_SHOW_KEY
 import com.huluxia.assistance.MENU_PROFILE_COPY_USERID_SHOW_KEY
 import com.huluxia.assistance.hooks.resource.ResId.bbc
+import com.huluxia.assistance.utils.showToast
 import de.robv.android.xposed.XC_MethodHook
 import de.robv.android.xposed.XposedHelpers
 

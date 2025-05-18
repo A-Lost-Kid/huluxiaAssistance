@@ -60,7 +60,6 @@ android {
 
 dependencies {
     compileOnly(libs.api)
-    implementation(libs.ezxhelper)
     implementation("com.highcapable.yukihookapi:api:1.2.1")
     ksp("com.highcapable.yukihookapi:ksp-xposed:1.2.1")
     implementation("androidx.appcompat:appcompat:1.2.0")

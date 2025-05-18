@@ -24,9 +24,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
-import com.github.kyuubiran.ezxhelper.misc.AndroidUtils.showToast
 import com.highcapable.yukihookapi.hook.factory.toClass
 import com.huluxia.assistance.pages.components.ChildItem
+import com.huluxia.assistance.utils.showToast
 import com.kongzue.dialogx.dialogs.InputDialog
 import com.kongzue.dialogx.dialogs.MessageDialog
 import com.kongzue.dialogx.interfaces.OnInputDialogButtonClickListener
