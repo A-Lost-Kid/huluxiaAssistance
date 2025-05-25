@@ -20,6 +20,8 @@ object ResId {
         private set
     lateinit var bbj: Class<*>
         private set
+    lateinit var bbe: Class<*>
+        private set
 
     fun init(packageName: String, appClassLoader: ClassLoader?) {
         if (!this::bbh.isInitialized) {
@@ -33,6 +35,7 @@ object ResId {
             this.bbh = (suffix + "h").toClass(appClassLoader)
             this.bbn = (suffix + "n").toClass(appClassLoader)
             this.bbj = (suffix + "j").toClass(appClassLoader)
+            this.bbe = (suffix + "e").toClass(appClassLoader)
         } else {
             YLog.error("ResId already initialized!")
         }

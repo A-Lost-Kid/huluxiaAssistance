@@ -28,6 +28,7 @@ import com.highcapable.yukihookapi.hook.factory.method
 import com.highcapable.yukihookapi.hook.factory.toClass
 import com.huluxia.assistance.CORE_DECRYPT_KEY
 import com.huluxia.assistance.pages.children.ABOUT_PAGE
+import com.huluxia.assistance.pages.children.DEVELOPER_PAGE
 import com.huluxia.assistance.pages.children.DISPLAY_PAGE
 import com.huluxia.assistance.pages.children.JUMP_PAGE
 import com.huluxia.assistance.pages.children.MENU_PAGE
@@ -145,6 +146,11 @@ fun MainPage(
                             ) {
                                 navController.navigate(JUMP_PAGE)
                             }
+                            ChildItem(
+                                label = "开发者选项"
+                            ) {
+                                navController.navigate(DEVELOPER_PAGE)
+                            }
                         }
 
                         Column(
@@ -214,7 +220,8 @@ fun MainPage(
                                         6L,
                                         67L,
                                         68L,
-                                        69L
+                                        69L,
+                                        15L
                                     )
                                     categoryIds.forEach { categoryId ->
                                         XposedHelpers.callMethod(

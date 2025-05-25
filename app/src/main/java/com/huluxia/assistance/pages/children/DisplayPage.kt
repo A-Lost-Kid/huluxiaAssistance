@@ -22,11 +22,16 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
-import com.huluxia.assistance.DISPLAY_HOOM_APP_STORE_KEY
 import com.huluxia.assistance.DISPLAY_HOOM_ROOT_RUN_KEY
+import com.huluxia.assistance.DISPLAY_MESSAGE_COMMENT_MORE_COLOR_RED_KEY
+import com.huluxia.assistance.DISPLAY_MESSAGE_COMMENT_MORE_KEY
 import com.huluxia.assistance.DISPLAY_PROFILE_AWAYLS_SHOW_IPADDR_KEY
+import com.huluxia.assistance.DISPLAY_PROFILE_COMMENT_MORE_COLOR_RED_KEY
+import com.huluxia.assistance.DISPLAY_PROFILE_COMMENT_MORE_KEY
 import com.huluxia.assistance.DISPLAY_PROFILE_MORE_KEY
+import com.huluxia.assistance.DISPLAY_TOPIC_COMMENT_MORE_COLOR_RED_KEY
 import com.huluxia.assistance.DISPLAY_TOPIC_COMMENT_MORE_KEY
+import com.huluxia.assistance.DISPLAY_TOPIC_MORE_COLOR_RED_KEY
 import com.huluxia.assistance.DISPLAY_TOPIC_MORE_KEY
 import com.huluxia.assistance.pages.components.ChildItemSwitch
 
@@ -199,6 +204,44 @@ fun DisplayPage(
                                 description = "评论ID、 时间精细",
                                 key = DISPLAY_TOPIC_COMMENT_MORE_KEY,
                                 default = true
+                            )
+                            ChildItemSwitch(
+                                context = context,
+                                label = "我的评论展示详细信息",
+                                description = "评论ID、 时间精细",
+                                key = DISPLAY_PROFILE_COMMENT_MORE_KEY,
+                                default = true
+                            )
+                            ChildItemSwitch(
+                                context = context,
+                                label = "消息评论展示详细信息",
+                                description = "评论ID、 时间精细",
+                                key = DISPLAY_MESSAGE_COMMENT_MORE_KEY,
+                                default = true
+                            )
+                            ChildItemSwitch(
+                                context = context,
+                                label = "帖子信息文本高显",
+                                key = DISPLAY_TOPIC_MORE_COLOR_RED_KEY,
+                                default = false
+                            )
+                            ChildItemSwitch(
+                                context = context,
+                                label = "评论信息文本高显",
+                                key = DISPLAY_TOPIC_COMMENT_MORE_COLOR_RED_KEY,
+                                default = false
+                            )
+                            ChildItemSwitch(
+                                context = context,
+                                label = "我的评论信息文本高显",
+                                key = DISPLAY_PROFILE_COMMENT_MORE_COLOR_RED_KEY,
+                                default = false
+                            )
+                            ChildItemSwitch(
+                                context = context,
+                                label = "消息评论信息文本高显",
+                                key = DISPLAY_MESSAGE_COMMENT_MORE_COLOR_RED_KEY,
+                                default = false
                             )
                         }
                     }

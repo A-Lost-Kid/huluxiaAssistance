@@ -36,7 +36,7 @@ fun PackageParam.settingHook() {
 
                     developerLayout.visibility = View.VISIBLE
                     val developerTextView = settingsActivity.findViewById<TextView>(tvDeveloper)
-                    developerTextView.text = "葫芦猪手（1.0.0）"
+                    developerTextView.text = "葫芦猪手（1.0.1）"
                     developerTextView.visibility = View.VISIBLE
                     developerTextView.setOnClickListener {
                         settingsActivity.startActivity(

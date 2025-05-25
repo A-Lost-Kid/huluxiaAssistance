@@ -9,6 +9,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.huluxia.assistance.pages.MAIN_PAGE
 import com.huluxia.assistance.pages.children.aboutPage
+import com.huluxia.assistance.pages.children.developerPage
 import com.huluxia.assistance.pages.children.displayPage
 import com.huluxia.assistance.pages.children.jumpPage
 import com.huluxia.assistance.pages.children.menuPage
@@ -65,6 +66,10 @@ fun Startup(
             navController = navController
         )
         displayPage(
+            cls = cls,
+            navController = navController
+        )
+        developerPage(
             cls = cls,
             navController = navController
         )

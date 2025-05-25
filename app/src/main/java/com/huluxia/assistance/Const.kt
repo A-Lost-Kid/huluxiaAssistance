@@ -33,4 +33,12 @@ const val DISPLAY_PROFILE_MORE_KEY = "display_profile_more"
 
 const val DISPLAY_TOPIC_MORE_KEY = "display_topic_more"
 const val DISPLAY_TOPIC_COMMENT_MORE_KEY = "display_topic_comment_more"
+const val DISPLAY_MESSAGE_COMMENT_MORE_KEY = "display_message_comment_more"
+const val DISPLAY_PROFILE_COMMENT_MORE_KEY = "display_profile_comment_more"
+const val DISPLAY_TOPIC_MORE_COLOR_RED_KEY = "display_topic_more_color_red"
+const val DISPLAY_TOPIC_COMMENT_MORE_COLOR_RED_KEY = "display_topic_comment_more_color_red"
+const val DISPLAY_MESSAGE_COMMENT_MORE_COLOR_RED_KEY = "display_message_comment_more_color_red"
+const val DISPLAY_PROFILE_COMMENT_MORE_COLOR_RED_KEY = "display_profile_comment_more_color_red"
 
+
+const val DEVELOPER_SSL_IGNORE_KEY = "developer_ssl_ignore"

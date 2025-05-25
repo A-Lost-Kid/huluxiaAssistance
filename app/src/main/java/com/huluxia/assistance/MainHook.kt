@@ -13,6 +13,7 @@ import com.highcapable.yukihookapi.hook.xposed.proxy.IYukiHookXposedInit
 import com.huluxia.assistance.hooks.hlxRequestHook
 import com.huluxia.assistance.hooks.homeHook
 import com.huluxia.assistance.hooks.menuHook
+import com.huluxia.assistance.hooks.netHook
 import com.huluxia.assistance.hooks.profileHook
 import com.huluxia.assistance.hooks.resource.ResId
 import com.huluxia.assistance.hooks.settingHook
@@ -66,6 +67,7 @@ object MainHook : IYukiHookXposedInit {
                         appContext?.packageName?.let { ResId.init(it,appClassLoader) }
 
                         settingHook()
+                        netHook()
                         homeHook()
                         topicHook()
                         profileHook()

@@ -406,18 +406,18 @@ fun PackageParam.menuHook(
                         }.get(profileDetailActivityThis).current()?.field {
                             name = "userID"
                         }?.long()
-
+                        val mContext = profileDetailActivityThis.javaClass.field {
+                            name = "A2"
+                        }.get(profileDetailActivityThis).cast<Context>()
                         if (inIndex == 0) {
                             if (userID.toString() == "11250503") {
-                                val mContext = profileDetailActivityThis.javaClass.field {
-                                    name = "A2"
-                                }.get(profileDetailActivityThis).cast<Context>()
+
                                 mContext?.showToast("就你也配举报👴？滚！")
                                 param.result = null
                                 return
                             }
                         } else if (inIndex == 3) {
-                            internalCopy(appClassLoader, this, userID.toString())
+                            internalCopy(appClassLoader, mContext!!, userID.toString())
                             param.result = null
                             return
                         }
@@ -439,7 +439,14 @@ fun PackageParam.menuHook(
 
 }
 
-private fun internalCopy(classLoader: ClassLoader?, xc: XC_MethodHook, text: String) {
+fun internalCopy(classLoader: ClassLoader?, context: Context, text: String) {
+    "com.huluxia.framework.base.utils.n".toClass(classLoader).method {
+        paramCount = 1
+        param(String::class.java)
+    }.get(context).call(text)
+}
+
+fun internalCopy(classLoader: ClassLoader?, xc: XC_MethodHook, text: String) {
     "com.huluxia.framework.base.utils.n".toClass(classLoader).method {
         paramCount = 1
         param(String::class.java)
